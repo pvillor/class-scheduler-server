@@ -11,7 +11,7 @@ export async function createAccount(
     name: z.string(),
     email: z.string().email(),
     password: z.string(),
-    role: z.enum(['student', 'teacher', 'admin']),
+    role: z.enum(['student', 'teacher', 'admin']).default('student'),
   })
 
   const { name, email, password, role } = createAccountBodySchema.parse(

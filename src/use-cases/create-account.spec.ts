@@ -13,13 +13,13 @@ describe('Create Account Use Case', () => {
   })
 
   it('should be able to create account', async () => {
-    const { userId } = await sut.execute({
+    const { user } = await sut.execute({
       name: 'John Doe',
       email: 'john.doe@example.com',
       password: '123456',
       role: 'student',
     })
 
-    expect(userId).toEqual(expect.any(String))
+    expect(user.id).toEqual(expect.any(String))
   })
 })

@@ -8,11 +8,27 @@ import {
 } from 'fastify-type-provider-zod'
 import fastifySwagger from '@fastify/swagger'
 import fastifySwaggerUi from '@fastify/swagger-ui'
+import { ZodError } from 'zod'
+import fastifyJwt from '@fastify/jwt'
+import fastifyCookie from '@fastify/cookie'
+
 import { env } from './env'
 import { appRoutes } from './http/routes'
-import { ZodError } from 'zod'
 
 export const app = fastify().withTypeProvider<ZodTypeProvider>()
+
+app.register(fastifyJwt, {
+  secret: env.JWT_SECRET,
+  cookie: {
+    cookieName: 'refreshToken',
+    signed: false,
+  },
+  sign: {
+    expiresIn: '10m',
+  },
+})
+
+app.register(fastifyCookie)
 
 app.setSerializerCompiler(serializerCompiler)
 app.setValidatorCompiler(validatorCompiler)
