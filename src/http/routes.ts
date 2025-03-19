@@ -6,9 +6,13 @@ import { createSchedule } from './controllers/create-schedule'
 import { auth } from './middlewares/auth'
 import { fetchSchedules } from './controllers/fetch-schedules'
 import { signOut } from './controllers/sign-out'
+import { getProfile } from './controllers/get-profile'
 
 export async function appRoutes(app: FastifyInstance) {
   app.post('/users', createAccount)
+
+  app.register(auth).get('/me', getProfile)
+
   app.post('/sessions', authenticate)
   app.register(auth).delete('/sessions', signOut)
 
