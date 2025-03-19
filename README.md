@@ -22,12 +22,12 @@ Typescript | Node | Fastify | DrizzleORM | MySQL | zod
   JWT_SECRET="my-secret-key"
   ```
 
+### Rodar migrations
+  ```
+    npx drizzle-kit migrate
+  ```
+
 ### Rodar a API
  ```
   npm run dev
  ```
-
-### Caso precise rodar migrations
-```
-  npx drizzle-kit migrate
-```
