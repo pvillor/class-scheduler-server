@@ -31,3 +31,8 @@ Typescript | Node | Fastify | DrizzleORM | MySQL | zod
  ```
   npm run dev
  ```
+
+### Rodar testes unitários
+ ```
+  npm run test
+ ```
