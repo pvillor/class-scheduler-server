@@ -20,8 +20,6 @@ Typescript | Node | Fastify | DrizzleORM | MySQL | zod
   API_BASE_URL="http://localhost:3333"
   MYSQL_URL=mysql://docker:docker@localhost:33066/classschedule
   JWT_SECRET_KEY="my-secret-key"
-  
-  DATABASE_URL="postgresql://postgres.wsoocvnhownwgfsgedwv:Sj8pPA7Lezz1uiab@aws-0-us-east-1.pooler.supabase.com:6543/postgres"
   ```
 
 ### Rodar a API
