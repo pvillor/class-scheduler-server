@@ -26,3 +26,8 @@ Typescript | Node | Fastify | DrizzleORM | MySQL | zod
  ```
   npm run dev
  ```
+
+### Caso precise rodar migrations
+```
+  npx drizzle-kit migrate
+```
