@@ -37,6 +37,7 @@ app.setValidatorCompiler(validatorCompiler)
 app.register(fastifyCors, {
   origin: 'http://localhost:5173',
   credentials: true,
+  methods: ['GET', 'POST', 'DELETE', 'PUT', 'PATCH'],
 })
 
 app.register(appRoutes)
