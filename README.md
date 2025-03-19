@@ -19,7 +19,7 @@ Typescript | Node | Fastify | DrizzleORM | MySQL | zod
   ```
   API_BASE_URL="http://localhost:3333"
   MYSQL_URL=mysql://docker:docker@localhost:33066/classschedule
-  JWT_SECRET_KEY="my-secret-key"
+  JWT_SECRET="my-secret-key"
   ```
 
 ### Rodar a API
