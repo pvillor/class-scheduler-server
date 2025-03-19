@@ -1,7 +1,7 @@
 # class.scheduler - API
 
 ## Stack
-Node | Fastify | DrizzleORM | MySQL | zod
+Typescript | Node | Fastify | DrizzleORM | MySQL | zod
 
 ### Instalação dos pacotes
   ```
