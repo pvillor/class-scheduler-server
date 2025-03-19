@@ -1,5 +1,6 @@
 import type { FastifyReply, FastifyRequest } from 'fastify'
 import z from 'zod'
+
 import { makeAuthenticateUseCase } from '../../use-cases/factories/make-authenticate-use-case'
 import { InvalidCredentialsError } from '../../use-cases/errors/invalid-credentials-error'
 
@@ -48,9 +49,7 @@ export async function authenticate(
     return reply
       .setCookie('refreshToken', refreshToken, {
         path: '/',
-        secure: true,
-        sameSite: true,
-        httpOnly: true,
+        secure: false,
       })
       .status(201)
       .send({
