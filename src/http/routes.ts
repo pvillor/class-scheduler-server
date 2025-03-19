@@ -7,6 +7,7 @@ import { auth } from './middlewares/auth'
 import { fetchSchedules } from './controllers/fetch-schedules'
 import { signOut } from './controllers/sign-out'
 import { getProfile } from './controllers/get-profile'
+import { fetchTeachers } from './controllers/fetch-teachers'
 
 export async function appRoutes(app: FastifyInstance) {
   app.post('/users', createAccount)
@@ -20,4 +21,6 @@ export async function appRoutes(app: FastifyInstance) {
 
   app.register(auth).post('/schedules', createSchedule)
   app.register(auth).get('/schedules', fetchSchedules)
+
+  app.register(auth).get('/teachers', fetchTeachers)
 }

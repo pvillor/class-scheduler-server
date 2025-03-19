@@ -17,6 +17,15 @@ export class DrizzleUsersRepository implements UsersRepository {
     return user
   }
 
+  async findManyTeachers() {
+    const teachers = await db
+      .select()
+      .from(users)
+      .where(eq(users.role, 'teacher'))
+
+    return teachers
+  }
+
   async create({ name, email, passwordHash, role }: CreateUser) {
     const [result] = await db
       .insert(users)

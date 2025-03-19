@@ -24,6 +24,12 @@ export class InMemoryUsersRepository implements UsersRepository {
     return user
   }
 
+  async findManyTeachers() {
+    const teachers = this.items.filter(item => item.role === 'teacher')
+
+    return teachers
+  }
+
   async create({ name, email, passwordHash, role }: CreateUser) {
     const user = {
       id: 'user-1',
