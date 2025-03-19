@@ -26,8 +26,3 @@ Typescript | Node | Fastify | DrizzleORM | MySQL | zod
  ```
   npm run dev
  ```
-
-### Documentação
-```
-  http://localhost:3333/docs
- ```
