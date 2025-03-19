@@ -5,10 +5,12 @@ import { refresh } from './controllers/refresh'
 import { createSchedule } from './controllers/create-schedule'
 import { auth } from './middlewares/auth'
 import { fetchSchedules } from './controllers/fetch-schedules'
+import { signOut } from './controllers/sign-out'
 
 export async function appRoutes(app: FastifyInstance) {
   app.post('/users', createAccount)
   app.post('/sessions', authenticate)
+  app.register(auth).delete('/sessions', signOut)
 
   app.patch('/token/refresh', refresh)
 

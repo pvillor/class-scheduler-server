@@ -14,6 +14,7 @@ import fastifyCookie from '@fastify/cookie'
 
 import { env } from './env'
 import { appRoutes } from './http/routes'
+import { UnauthorizedError } from './http/errors/unauthorized-error'
 
 export const app = fastify().withTypeProvider<ZodTypeProvider>()
 
@@ -52,16 +53,18 @@ app.register(fastifySwaggerUi, {
 })
 
 app.setErrorHandler((error, _, reply) => {
+  console.log(error)
   if (error instanceof ZodError) {
-    return reply
-      .status(400)
-      .send({ message: 'Validation error.', issues: error.format() })
+    return reply.status(400).send({
+      message: 'Validation error',
+      errors: error.flatten().fieldErrors,
+    })
   }
 
-  if (env.NODE_ENV !== 'production') {
-    console.error(error)
-  } else {
-    // TODO
+  if (error instanceof UnauthorizedError) {
+    return reply.status(401).send({
+      message: error.message,
+    })
   }
 
   return reply.status(500).send({ message: 'Internal server error.' })

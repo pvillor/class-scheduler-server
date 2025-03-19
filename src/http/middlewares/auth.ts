@@ -1,9 +1,9 @@
 import type { FastifyInstance } from 'fastify'
 import fastifyPlugin from 'fastify-plugin'
-import { UnauthorizedError } from '../errors/unauthorized-error'
 import { db } from '../../drizzle/client'
 import { users } from '../../drizzle/schema/users'
 import { eq } from 'drizzle-orm'
+import { UnauthorizedError } from '../errors/unauthorized-error'
 
 export const auth = fastifyPlugin(async (app: FastifyInstance) => {
   app.addHook('preHandler', async request => {
@@ -13,7 +13,7 @@ export const auth = fastifyPlugin(async (app: FastifyInstance) => {
 
         return sub
       } catch (error) {
-        throw new UnauthorizedError('Invalid auth token')
+        throw new UnauthorizedError()
       }
     }
 
